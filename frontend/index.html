@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n-key="site_title_document">E-commerce & Affiliates</title> <!-- JS will set this -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <aside id="sidebar" class="hidden">
+        <nav>
+            <ul class="sidebar-list">
+                <li>
+                    <a href="#products" class="sidebar-link" aria-label="Tienda">
+                        <span class="sidebar-icon">
+                            <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="StoreIcon"><path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"></path></svg>
+                        </span>
+                        <span class="sidebar-text" data-i18n-key="sidebar_store">Tienda</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#user-movements" class="sidebar-link" aria-label="Movimientos"> <!-- This ID doesn't exist yet, placeholder -->
+                        <span class="sidebar-icon">
+                            <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CurrencyExchangeIcon"><path d="M12.89 11.1c-1.78-.59-2.64-.96-2.64-1.9 0-1.02 1.11-1.39 1.81-1.39 1.31 0 1.79.99 1.9 1.34l1.58-.67c-.15-.45-.82-1.92-2.54-2.24V5h-2v1.26c-2.48.56-2.49 2.86-2.49 2.96 0 2.27 2.25 2.91 3.35 3.31 1.58.56 2.28 1.07 2.28 2.03 0 1.13-1.05 1.61-1.98 1.61-1.82 0-2.34-1.87-2.4-2.09l-1.66.67c.63 2.19 2.28 2.78 2.9 2.96V19h2v-1.24c.4-.09 2.9-.59 2.9-3.22 0-1.39-.61-2.61-3.01-3.44zM3 21H1v-6h6v2H4.52c1.61 2.41 4.36 4 7.48 4 4.97 0 9-4.03 9-9h2c0 6.08-4.92 11-11 11-3.72 0-7.01-1.85-9-4.67V21zm-2-9C1 5.92 5.92 1 12 1c3.72 0 7.01 1.85 9 4.67V3h2v6h-6V7h2.48C17.87 4.59 15.12 3 12 3c-4.97 0-9 4.03-9 9H1z"></path></svg>
+                        </span>
+                        <span class="sidebar-text" data-i18n-key="sidebar_movements">Movimientos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#user-profile" class="sidebar-link" aria-label="Cuentas">
+                        <span class="sidebar-icon">
+                            <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="MonitorIcon"><path d="M20 3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h3l-1 1v2h12v-2l-1-1h3c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 13H4V5h16v11z"></path></svg>
+                        </span>
+                        <span class="sidebar-text" data-i18n-key="sidebar_accounts">Cuentas</span>
+                    </a>
+                </li>
+                <li id="sidebar-link-customers" class="hidden"> <!-- Admin only -->
+                    <a href="admin.html#admin-customers-section" class="sidebar-link" aria-label="Clientes"> <!-- Points to admin page section -->
+                        <span class="sidebar-icon">
+                            <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="PeopleIcon"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"></path></svg>
+                        </span>
+                        <span class="sidebar-text" data-i18n-key="sidebar_customers">Clientes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#products" class="sidebar-link" aria-label="Servicios"> <!-- Same as Tienda for now -->
+                        <span class="sidebar-icon">
+                            <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CastIcon"><path d="M21 3H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11z"></path></svg>
+                        </span>
+                        <span class="sidebar-text" data-i18n-key="sidebar_services">Servicios</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <header>
+        <img id="site-logo" src="logo.png" alt="Site Logo" data-i18n-key="alt_site_logo">
+        <button id="sidebar-toggle" aria-label="Toggle Menu" data-i18n-key="aria_label_toggle_menu" title="Toggle Menu">
+            <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="MenuIcon"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
+        </button>
+        <div class="space-inline" id="new-header-buttons"> <!-- Added an ID for easier targeting if needed -->
+            <button id="header-credits-button" class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedWarning MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-root MuiButton-contained MuiButton-containedWarning MuiButton-sizeSmall MuiButton-containedSizeSmall css-1ma0rjo hidden" tabindex="0" type="button" style="text-transform: none; margin-right: 10px;">0 Créditos<span class="MuiTouchRipple-root css-w0pj6f"></span></button>
+            <button id="header-tasks-button" class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium mr-2 css-167qg84 hidden" tabindex="0" type="button" aria-label="Tareas" aria-controls="menu-appbar" aria-haspopup="true"><span class="MuiBadge-root css-1rzb3uu"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="AssignmentIcon"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"></path></svg><span class="MuiBadge-badge MuiBadge-standard MuiBadge-invisible MuiBadge-anchorOriginTopRight MuiBadge-anchorOriginTopRightRectangular MuiBadge-overlapRectangular MuiBadge-colorError css-13rr3hl"></span></span><span class="MuiTouchRipple-root css-w0pj6f"></span></button>
+            <button id="header-cart-button" class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium mr-2 css-167qg84 hidden" tabindex="0" type="button" aria-label="Carrito compras" aria-controls="menu-appbar" aria-haspopup="true"><span class="MuiBadge-root css-1rzb3uu"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="ShoppingCartIcon"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"></path></svg><span class="MuiBadge-badge MuiBadge-standard MuiBadge-invisible MuiBadge-anchorOriginTopRight MuiBadge-anchorOriginTopRightRectangular MuiBadge-overlapRectangular MuiBadge-colorSuccess css-1ovz2o0"></span></span><span class="MuiTouchRipple-root css-w0pj6f"></span></button>
+            <button id="header-settings-button" class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium mr-2 css-167qg84" tabindex="0" type="button" aria-label="Configuración" aria-controls="menu-appbar" aria-haspopup="true"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="SettingsIcon"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12-.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47.41l.36 2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"></path></svg><span class="MuiTouchRipple-root css-w0pj6f"></span></button>
+            <div id="header-avatar-button" class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-z83gb hidden" tabindex="0" role="button" aria-label="Usuario" aria-controls="menu-appbar" aria-haspopup="true"><div class="MuiAvatar-root MuiAvatar-circular css-129ds2e"><img alt="avatar" src="https://netfly.s3.sa-east-1.amazonaws.com/u/demo/images/avatar/IM9pP2hNkPUkltS7MxSAazgDeHvcjPf0YqBzngHs.jpg" class="MuiAvatar-img css-1hy9t21"></div><span class="MuiTouchRipple-root css-w0pj6f"></span></div>
+        </div>
+        <nav>
+            <!-- Language switcher removed from here -->
+            <a href="admin.html" id="admin-page-link" class="hidden admin-link" data-i18n-key="header_admin_panel">Admin Panel</a>
+            <button id="logout-button" class="hidden" data-i18n-key="header_logout">Logout</button>
+        </nav>
+    </header>
+    <main id="main-content">
+    <section id="user-auth">
+        <h2 data-i18n-key="section_user_auth">User Authentication</h2>
+        <form id="register-form">
+            <h3 data-i18n-key="form_title_register">Register</h3>
+            <div>
+                <label for="register-name" data-i18n-key="form_label_name">Name:</label>
+                <input type="text" id="register-name" name="name" required autocomplete="name">
+            </div>
+            <div>
+                <label for="register-email" data-i18n-key="form_label_email">Email:</label>
+                <input type="email" id="register-email" name="email" required autocomplete="email">
+            </div>
+            <div>
+                <label for="register-password" data-i18n-key="form_label_password">Password:</label>
+                <input type="password" id="register-password" name="password" required minlength="6" autocomplete="new-password">
+            </div>
+            <button type="submit" data-i18n-key="btn_register">Register</button>
+        </form>
+
+        <form id="login-form">
+            <h3 data-i18n-key="form_title_login">Login</h3>
+            <div>
+                <label for="login-email" data-i18n-key="form_label_email">Email:</label>
+                <input type="email" id="login-email" name="email" required autocomplete="email">
+            </div>
+            <div>
+                <label for="login-password" data-i18n-key="form_label_password">Password:</label>
+                <input type="password" id="login-password" name="password" required autocomplete="current-password">
+            </div>
+            <button type="submit" data-i18n-key="btn_login">Login</button>
+        </form>
+    </section>
+
+    <section id="user-profile" class="hidden">
+        <h2 data-i18n-key="section_user_profile">User Profile</h2>
+        <p><strong data-i18n-key="profile_label_name">Name:</strong> <span id="profile-name"></span></p>
+        <p><strong data-i18n-key="profile_label_email">Email:</strong> <span id="profile-email"></span></p>
+        <p><strong data-i18n-key="profile_label_affiliate_id">Affiliate ID:</strong> <span id="profile-affiliate-id"></span></p>
+        <p><strong data-i18n-key="affiliate_your_link">Your Affiliate Link:</strong> <a id="profile-affiliate-link" href="#" target="_blank"></a></p>
+    </section>
+
+    <section id="affiliate-dashboard" class="hidden">
+        <h2 data-i18n-key="section_affiliate_dashboard">Affiliate Dashboard</h2>
+        <p><span data-i18n-key="affiliate_your_link_prefix">Your Affiliate Link:</span> <strong id="affiliate-link-display">N/A</strong></p>
+        
+        <div id="affiliate-stats">
+            <h3 data-i18n-key="affiliate_my_statistics">My Statistics</h3>
+            <p><span data-i18n-key="affiliate_stats_signups">Total Sign-ups:</span> <span id="stats-total-signups">0</span></p>
+            <p><span data-i18n-key="affiliate_stats_orders">Total Referred Orders:</span> <span id="stats-total-orders">0</span></p>
+            <p><span data-i18n-key="affiliate_stats_pending_commission_label">Pending Commission:</span> MXN <span id="stats-pending-commission">0.00</span></p>
+            <p><span data-i18n-key="affiliate_stats_paid_commission_label">Paid/Approved Commission:</span> MXN <span id="stats-paid-commission">0.00</span></p>
+        </div>
+
+        <div id="affiliate-referrals-section">
+            <h3 data-i18n-key="affiliate_my_referred_orders">My Referred Orders</h3>
+            <div id="affiliate-referrals-list">
+                <!-- Referrals will be populated here by JS -->
+            </div>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="products">
+        <h2 data-i18n-key="section_products">Products</h2>
+        <div id="products-container">
+            <p id="products-loading-message" data-i18n-key="text_loading_products">Loading products...</p>
+        </div>
+    </section>
+
+    <section id="cart">
+        <h2 data-i18n-key="section_shopping_cart">Shopping Cart</h2>
+        <div id="cart-items">
+            <!-- Cart items will be displayed here -->
+        </div>
+        <p><span data-i18n-key="cart_total">Total:</span> <span id="total-price">MXN 0.00</span></p>
+    </section>
+
+    <script src="i18n.js"></script>
+    <script src="script.js"></script>
+
+    <section id="checkout">
+        <h2 data-i18n-key="section_checkout">Checkout</h2>
+        <p data-i18n-key="checkout_form_description">Please fill in your details to complete the order. If you are logged in, these might be pre-filled.</p>
+        <form id="checkout-form">
+            <div>
+                <label for="checkout-name" data-i18n-key="form_label_name">Name:</label>
+                <input type="text" id="checkout-name" name="name" required autocomplete="name">
+            </div>
+            <div>
+                <label for="checkout-email" data-i18n-key="form_label_email">Email:</label>
+                <input type="email" id="checkout-email" name="email" required autocomplete="email">
+            </div>
+            <div>
+                <label for="checkout-phone" data-i18n-key="form_label_phone">Phone Number:</label>
+                <input type="tel" id="checkout-phone" name="phone" required autocomplete="tel">
+            </div>
+            <button type="submit" id="place-order-button" data-i18n-key="btn_place_order">Place Order</button>
+            <p id="checkout-auth-message" class="hidden auth-message"></p>
+        </form>
+    </section>
+    </main>
+    <footer>
+        <p data-i18n-key="footer_copyright">&copy; 2024 My E-commerce Site</p>
+    </footer>
+
+    <div id="settings-dropdown" class="header-dropdown hidden">
+        <div class="dropdown-section" id="theme-switcher-section">
+            <h4 data-i18n-key="dropdown_theme_title">Theme</h4>
+            <div class="dropdown-buttons">
+                <button id="theme-light-button" data-i18n-key="dropdown_theme_light" class="dropdown-button">Light</button>
+                <button id="theme-dark-button" data-i18n-key="dropdown_theme_dark" class="dropdown-button">Dark</button>
+            </div>
+        </div>
+        <hr class="dropdown-divider">
+        <div class="dropdown-section" id="language-switcher-section-dropdown">
+            <h4 data-i18n-key="dropdown_language_title">Language</h4>
+            <div class="dropdown-buttons" id="language-buttons-container-dropdown">
+                <button type="button" id="lang-en-button" data-lang="en" class="dropdown-button">English</button>
+                <button type="button" id="lang-es-button" data-lang="es" class="dropdown-button">Español</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cart-summary-dropdown" class="header-dropdown hidden">
+        <div class="dropdown-section">
+            <h4 data-i18n-key="dropdown_cart_title">Shopping Cart Summary</h4>
+        </div>
+        <div id="cart-summary-items-container" style="max-height: 200px; overflow-y: auto; margin-bottom: 10px;">
+            <!-- Cart items will be dynamically rendered here by JS -->
+            <p class="empty-cart-message" data-i18n-key="dropdown_cart_empty" style="text-align: center; color: var(--text-muted);">Your cart is empty.</p>
+        </div>
+        <hr class="dropdown-divider">
+        <div class="dropdown-section cart-summary-total-section" style="display: flex; justify-content: space-between; align-items: center; font-weight: bold;">
+            <span data-i18n-key="dropdown_cart_total_label">Total:</span>
+            <span id="cart-summary-total-price">MXN 0.00</span>
+        </div>
+        <div class="dropdown-section cart-summary-actions" style="margin-top: 10px;">
+            <button id="cart-summary-checkout-button" class="dropdown-button primary-action-button" data-i18n-key="dropdown_cart_checkout" style="width: 100%;">Proceed to Checkout</button>
+        </div>
+    </div>
+</body>
+</html>
