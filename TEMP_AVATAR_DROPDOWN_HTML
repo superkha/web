@@ -1,0 +1,54 @@
+<div id="avatar-dropdown" class="header-dropdown hidden">
+    <div class="MuiBox-root css-0"> <!-- Outermost wrapper from user -->
+        <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-yu30p6"> <!-- Main card -->
+            <div class="MuiCardContent-root bg-profile-content css-80p3xt" style="background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url(&quot;https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1631&amp;q=80&quot;); background-size: cover; background-position: center center; padding: 24px; color: rgb(255, 255, 255);">
+                <div class="MuiBox-root css-x75k2s" style="display: flex; align-items: center;">
+                    <div class="MuiAvatar-root MuiAvatar-circular css-129ds2e" style="width: 70px; height: 70px; border: 2px solid rgb(255, 255, 255); margin-right: 16px;">
+                        <img alt="avatar" src="https://netfly.s3.sa-east-1.amazonaws.com/u/demo/images/avatar/IM9pP2hNkPUkltS7MxSAazgDeHvcjPf0YqBzngHs.jpg" class="MuiAvatar-img css-1hy9t21" id="avatar-dropdown-user-image">
+                    </div>
+                    <div class="MuiBox-root css-0">
+                        <h6 class="MuiTypography-root MuiTypography-h6 css-1q9z1d0" id="avatar-dropdown-username" style="font-weight: 500;">Usuario Test</h6>
+                        <p class="MuiTypography-root MuiTypography-body2 css-1gt66m" id="avatar-dropdown-user-role" style="color: rgb(206, 206, 206);">Cliente</p>
+                    </div>
+                </div>
+            </div>
+            <div class="MuiCardActions-root css-k1hdl7" style="padding: 0px;">
+                <div class="MuiTabs-root css-1tvn2qk" style="flex: 1 1 0px;">
+                    <div class="MuiTabs-scroller MuiTabs-fixed css-1anid1y" style="overflow: hidden;">
+                        <div class="MuiTabs-flexContainer css-k008qs" role="tablist">
+                            <button class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-1tvmwaa" tabindex="0" type="button" role="tab" aria-selected="true" id="avatar-dropdown-tab-general" aria-controls="avatar-dropdown-tabpanel-general">
+                                <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="PersonOutlineIcon" style="margin-right: 8px;"><path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"></path></svg>
+                                General
+                            <span class="MuiTabs-indicator css-118dy7j" style="left: 0px; width: 80.3281px;"></span></button>
+                            <button class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1tvmwaa" tabindex="-1" type="button" role="tab" aria-selected="false" id="avatar-dropdown-tab-security" aria-controls="avatar-dropdown-tabpanel-security">
+                                <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="LockOpenOutlinedIcon" style="margin-right: 8px;"><path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-10C9.24 0 7 2.24 7 5v3H6c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2h-1V5c0-2.76-2.24-5-5-5zm2.8 8H9.2V5.6C9.2 4.12 10.48 3 12 3s2.8 1.12 2.8 2.6V8z"></path></svg>
+                                Seguridad
+                            </button>
+                            <button class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1tvmwaa" tabindex="-1" type="button" role="tab" aria-selected="false" id="avatar-dropdown-tab-sessions" aria-controls="avatar-dropdown-tabpanel-sessions">
+                                <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="HistoryOutlinedIcon" style="margin-right: 8px;"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.25 2.52.77-1.28-3.52-2.09V8H12z"></path></svg>
+                                Sesiones
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown-section admin-panel-link-container hidden" id="avatar-admin-panel-link-container" style="padding: 8px 16px; border-top: 1px solid var(--border-gray); margin-top: 8px;">
+                <a href="admin.html" id="avatar-admin-panel-link" class="dropdown-link" data-i18n-key="header_admin_panel">Admin Panel</a>
+            </div>
+        </div> <!-- Closing MuiPaper-root / MuiCard-root -->
+
+        <!-- Tab Panels -->
+        <div class="MuiBox-root css-8135er" style="padding:16px;">
+            <div role="tabpanel" id="avatar-dropdown-tabpanel-general" aria-labelledby="avatar-dropdown-tab-general">
+                <p>Contenido General (perfil, etc.)</p>
+                 <a href="#" id="avatar-logout-button" class="dropdown-link" data-i18n-key="header_logout_dropdown" style="display:block; margin-top:10px; color:var(--error-red);">Logout</a>
+            </div>
+            <div role="tabpanel" id="avatar-dropdown-tabpanel-security" aria-labelledby="avatar-dropdown-tab-security" class="hidden">
+                <p>Contenido de Seguridad (cambiar contraseña, 2FA, etc.)</p>
+            </div>
+            <div role="tabpanel" id="avatar-dropdown-tabpanel-sessions" aria-labelledby="avatar-dropdown-tab-sessions" class="hidden">
+                <p>Contenido de Sesiones (dispositivos activos, etc.)</p>
+            </div>
+        </div>
+    </div>
+</div>

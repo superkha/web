@@ -1,0 +1,1032 @@
+/* frontend/style.css - Entertainment Hub Chic Theme with Sidebar */
+
+/* --- CSS Variables --- */
+:root {
+    --dark-bg1: #121212;         /* Primary darkest background */
+    --dark-bg2: #1E1E1E;         /* Slightly lighter for cards/elements/sidebar */
+    --text-light: #E0E0E0;       /* Primary text color */
+    --text-muted: #A0A0A0;       /* For less important text */
+    --accent-blue: #3B82F6;      /* Main accent color (buttons, links, active states) */
+    --accent-blue-darker: #2563EB; /* For hover states on accent blue */
+    --accent-blue-rgb: 59, 130, 246; /* RGB for box-shadow opacity */
+    --border-gray: #404040;       /* Borders and dividers */
+    --success-green: #28a745;    /* Success messages/indicators */
+    --error-red: #dc3545;        /* Error messages, destructive buttons */
+    --error-red-darker: #c82333; /* Hover for destructive buttons */
+    --link-hover-color: #60A5FA; /* Lighter blue for link hover */
+    --input-bg: var(--dark-bg1); /* Or var(--dark-bg2) if preferred for contrast */
+
+    --warning-yellow: #FFC107;
+    --warning-yellow-darker: #E0A800;
+    --warning-text-color: #333333; /* Dark text for on-warning backgrounds */
+    --text-light-rgb: 224, 224, 224; /* For rgba hover effects */
+
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* --- Global Body Styles --- */
+body {
+    background-color: var(--dark-bg1);
+    color: var(--text-light);
+    font-family: var(--font-sans);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    /* Add padding-left if sidebar is always visible and pushing content */
+    /* padding-left: 260px; */ /* Example if sidebar is fixed and open */
+}
+
+/* --- Light Theme Variables --- */
+body.light-theme {
+    --dark-bg1: #F0F2F5;         /* Primary light background */
+    --dark-bg2: #FFFFFF;         /* Slightly darker for cards/elements/sidebar */
+    --text-light: #1c1e21;       /* Primary dark text for light theme */
+    --text-muted: #5A6067;       /* For less important text in light theme */
+    --accent-blue: #007bff;      /* Main accent color (buttons, links, active states) */
+    --accent-blue-darker: #0056b3; /* For hover states on accent blue */
+    --accent-blue-rgb: 0, 123, 255; /* RGB for box-shadow opacity */
+    --border-gray: #CED4DA;       /* Borders and dividers for light theme */
+    --success-green: #218838;    /* Success messages/indicators */
+    --error-red: #c82333;        /* Error messages, destructive buttons */
+    --error-red-darker: #bd2130; /* Hover for destructive buttons */
+    --link-hover-color: #0056b3; /* Darker blue for link hover */
+    --input-bg: #FFFFFF;         /* Input background for light theme */
+    --box-shadow-color-rgb: 100,100,100; /* Lighter shadows for light theme */
+    --text-light-rgb: 28, 30, 33; /* For rgba hover effects on light theme (dark text) */
+
+
+    /* Specific overrides for elements that might not use variables directly or need tweaking */
+    --sidebar-bg: var(--dark-bg2); /* Sidebar background */
+    --header-bg: var(--dark-bg2);  /* Header background */
+    --footer-bg: var(--dark-bg2);  /* Footer background */
+    --button-text-color: #FFFFFF; /* Default button text (e.g. on accent-blue) */
+    --button-destructive-text-color: #FFFFFF; 
+}
+
+
+/* --- Basic HTML Elements --- */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-light);
+    margin-top: 1.5em;
+    margin-bottom: 0.75em; /* Adjusted for better spacing */
+    font-weight: 600;
+}
+
+h1 { font-size: 2.2em; }
+h2 { font-size: 1.8em; }
+h3 { font-size: 1.4em; }
+
+p {
+    margin-bottom: 1em;
+    color: var(--text-muted); /* Default p to muted, override if needed */
+}
+section p, section li { /* Ensure text within sections is primary light unless specified */
+    color: var(--text-light);
+}
+
+
+a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border-gray);
+    margin: 20px 0;
+}
+
+/* --- Utility Classes --- */
+.hidden {
+    display: none !important;
+}
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* --- Message Styling (for JS feedback) --- */
+.message { /* General message styling on forms */
+    padding: 10px 15px;
+    margin-top: 15px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 500;
+}
+/* Specific message styles relying on JS setting text color */
+#add-product-message-admin[style*="color: green"],
+#checkout-auth-message[style*="color: green"] { /* Assuming green for success */
+    color: var(--success-green) !important;
+    background-color: rgba(40, 167, 69, 0.1); /* Use fixed RGB or add var for success-green-rgb */
+    border: 1px solid var(--success-green);
+}
+#add-product-message-admin[style*="color: red"],
+#checkout-auth-message[style*="color: red"] { /* Assuming red for error */
+    color: var(--error-red) !important;
+    background-color: rgba(220, 53, 69, 0.1); /* Use fixed RGB or add var for error-red-rgb */
+    border: 1px solid var(--error-red);
+}
+#checkout-auth-message { /* Default styling if no color set by JS yet */
+    color: var(--text-muted);
+}
+
+
+/* --- Header and Footer --- */
+header {
+    background-color: var(--header-bg); 
+    padding: 10px 20px; 
+    border-bottom: 1px solid var(--border-gray);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    position: relative; 
+    z-index: 1001;      
+}
+img#site-logo {
+    max-height: 40px; 
+    margin-right: 10px; 
+    order: 0; 
+}
+
+header nav { 
+    order: 3; 
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: 0; 
+}
+header #admin-user-info { 
+    order: 3; 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    margin-left: 0; 
+}
+header nav a.admin-link { 
+    color: var(--accent-blue);
+    font-weight: 500;
+}
+header nav a.admin-link:hover {
+    color: var(--link-hover-color);
+}
+
+footer {
+    text-align: center;
+    padding: 20px 30px; 
+    margin-top: 40px; 
+    background-color: var(--footer-bg);
+    border-top: 1px solid var(--border-gray);
+    font-size: 0.9em;
+    color: var(--text-muted);
+    position: relative; 
+}
+footer p {
+    margin: 0;
+    color: var(--text-muted); 
+}
+
+/* --- Sidebar Toggle Button (Now in Header) --- */
+#sidebar-toggle {
+    background-color: transparent; 
+    color: var(--text-light);    
+    border: 1px solid transparent; 
+    border-radius: 50%;
+    width: 40px;  
+    height: 40px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease, border-color 0.2s ease;
+    margin-right: auto; 
+    margin-left: 0; 
+    order: 1; 
+}
+
+#sidebar-toggle:hover {
+    background-color: var(--dark-bg1); 
+    border-color: var(--border-gray);
+    transform: scale(1.1);
+}
+
+#sidebar-toggle:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--accent-blue-rgb), 0.4);
+    border-color: var(--accent-blue); 
+}
+
+#sidebar-toggle svg {
+    transition: transform 0.3s ease-in-out; 
+    fill: currentColor; 
+    width: 22px; 
+    height: 22px; 
+}
+
+#sidebar-toggle.sidebar-toggle-active svg { 
+    transform: rotate(90deg); 
+}
+
+/* --- General Section Styling --- */
+section {
+    padding: 25px; 
+    margin: 20px auto; 
+    background-color: var(--dark-bg1); 
+    border: 1px solid var(--border-gray);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(var(--box-shadow-color-rgb, 0,0,0),0.2); /* Adjusted for theme */
+    max-width: 900px; 
+}
+section h2 { 
+    text-align: left; 
+    margin-top: 0; 
+    margin-bottom: 20px;
+    color: var(--text-light); 
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--accent-blue); 
+}
+
+/* Card-like sections */
+#user-auth form, 
+#user-profile, 
+#affiliate-dashboard,
+#cart,
+#checkout,
+#admin-page main section 
+{
+    background-color: var(--dark-bg2); 
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--border-gray);
+    box-shadow: 0 4px 12px rgba(var(--box-shadow-color-rgb, 0,0,0),0.25); /* Adjusted for theme */
+}
+#user-auth h2, 
+#user-profile h2, 
+#affiliate-dashboard h2, 
+#cart h2, 
+#checkout h2,
+#admin-page main h2 {
+    color: var(--accent-blue); 
+    text-align: center;
+    border-bottom-width: 2px; 
+}
+
+
+/* --- Product Styling --- */
+#products-container {
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 25px;
+    padding: 0; 
+}
+.product {
+    background-color: var(--dark-bg2);
+    border: 1px solid var(--border-gray);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(var(--box-shadow-color-rgb, 0,0,0),0.2); /* Adjusted for theme */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(var(--box-shadow-color-rgb, 0,0,0),0.3); /* Adjusted for theme */
+}
+.product img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+.product h2 { /* Product name */
+    font-size: 1.4em; 
+    margin-bottom: 10px;
+    color: var(--text-light);
+    text-align: left;
+    border-bottom: none; 
+}
+.product p.description {
+    font-size: 0.9em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    flex-grow: 1;
+}
+.product p.category {
+    font-size: 0.8em;
+    color: var(--accent-blue);
+    margin-bottom: 10px;
+    font-style: italic;
+    font-weight: 500;
+}
+.product p.price {
+    font-weight: bold;
+    color: var(--text-light);
+    font-size: 1.25em;
+    margin-bottom: 15px;
+}
+
+/* --- Button Styling --- */
+button, input[type="submit"], .button-style 
+{
+    background-color: var(--accent-blue);
+    color: var(--button-text-color, white); /* Added variable */
+    border: none;
+    padding: 10px 20px; 
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500; 
+    text-align: center;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+button:hover, input[type="submit"]:hover, .button-style:hover {
+    background-color: var(--accent-blue-darker);
+    transform: translateY(-1px); 
+}
+button:active, input[type="submit"]:active, .button-style:active {
+    transform: translateY(0);
+}
+/* Destructive buttons */
+.remove-from-cart,
+#logout-button,
+#admin-user-info #admin-logout-button {
+    background-color: var(--error-red);
+    color: var(--button-destructive-text-color, white); /* Added variable */
+    padding: 8px 15px; 
+    font-size: 0.9em;
+}
+.remove-from-cart:hover,
+#logout-button:hover,
+#admin-user-info #admin-logout-button:hover {
+    background-color: var(--error-red-darker);
+}
+
+/* --- Form Styling --- */
+form div {
+    margin-bottom: 18px; 
+}
+form label {
+    display: block;
+    margin-bottom: 6px; 
+    font-weight: 500;
+    color: var(--text-muted);
+}
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"],
+form input[type="url"],
+form input[type="tel"], 
+form input[type="file"], 
+form textarea {
+    width: 100%;
+    padding: 12px; 
+    border: 1px solid var(--border-gray);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: var(--input-bg);
+    color: var(--text-light);
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+form input:focus, form textarea:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(var(--accent-blue-rgb), 0.25); 
+}
+form textarea {
+    min-height: 100px; 
+    resize: vertical;
+}
+form button[type="submit"] { 
+    width: 100%; 
+}
+/* Disabled states for checkout form */
+#place-order-button:disabled {
+    background-color: #555; /* Hardcoded, consider a variable */
+    color: #888; /* Hardcoded, consider a variable */
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: none; 
+}
+#checkout-form input:disabled {
+    background-color: #2a2a2a; /* Hardcoded, consider a variable */
+    color: #777; /* Hardcoded, consider a variable */
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* --- Cart Section --- */
+#cart-items div { 
+    border-bottom: 1px solid var(--border-gray);
+    padding: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#cart-items div:last-child {
+    border-bottom: none;
+}
+#total-price { 
+    font-weight: bold;
+    font-size: 1.25em; 
+    color: var(--text-light);
+    margin-top: 15px;
+    text-align: right;
+}
+
+/* --- User Auth Section --- */
+#user-auth {
+    display: flex;
+    flex-direction: column; 
+    gap: 30px; 
+    background-color: var(--dark-bg1); 
+    border: none; 
+    box-shadow: none;
+}
+@media (min-width: 768px) { 
+    #user-auth {
+        flex-direction: row;
+        justify-content: space-between; 
+        align-items: flex-start;
+    }
+    #user-auth form {
+        width: calc(50% - 15px); 
+    }
+}
+
+/* --- User Profile & Affiliate Dashboard --- */
+#user-profile p, #affiliate-dashboard p {
+    color: var(--text-muted);
+    line-height: 1.7; 
+}
+#user-profile strong, #affiliate-dashboard strong {
+    color: var(--text-light);
+    font-weight: 500;
+}
+#profile-affiliate-link, #affiliate-link-display { 
+    color: var(--accent-blue);
+    font-weight: bold;
+    word-break: break-all; 
+}
+#affiliate-stats { 
+    background-color: var(--dark-bg1); 
+    border: 1px solid var(--border-gray);
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    padding: 20px;
+}
+#affiliate-stats h3, #affiliate-referrals-section h3 {
+    color: var(--text-light);
+    text-align: left; 
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-gray);
+    padding-bottom: 8px;
+}
+#affiliate-referrals-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+#affiliate-referrals-list li { 
+    background-color: var(--dark-bg1); 
+    border: 1px solid var(--border-gray);
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+#affiliate-referrals-list li:nth-child(odd) { 
+    background-color: rgba(var(--box-shadow-color-rgb,0,0,0),0.1); /* Adjusted for theme */
+}
+
+/* --- Admin Page Specific Styles --- */
+body#admin-page header { 
+    background-color: var(--header-bg); 
+}
+#admin-user-info { 
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+#admin-user-info #admin-email-display {
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+
+#admin-nav { 
+    background-color: var(--dark-bg1); 
+    border-bottom: 1px solid var(--border-gray);
+    padding: 10px 25px; 
+    margin-bottom: 20px;
+}
+#admin-nav ul { list-style-type: none; padding: 0; margin: 0; display: flex; gap: 10px; }
+#admin-nav ul li a { padding: 8px 15px; text-decoration: none; color: var(--accent-blue); border-radius: 4px; }
+#admin-nav ul li a:hover { background-color: var(--dark-bg2); color: var(--link-hover-color); }
+
+
+#add-product-form-admin label { 
+    color: var(--text-muted);
+}
+#add-product-form-admin input[type="text"],
+#add-product-form-admin input[type="number"],
+#add-product-form-admin input[type="url"],
+#add-product-form-admin input[type="file"],
+#add-product-form-admin textarea {
+    background-color: var(--input-bg); 
+    color: var(--text-light);
+    border-color: var(--border-gray);
+}
+
+
+/* --- Language Switcher Styling --- */
+/* Styles for #language-switcher-container and its direct buttons were removed as they are now in settings dropdown */
+/* Styling for #language-select-admin (dropdown on admin page) remains as it's a different element */
+#language-switcher-container-admin { /* Header on admin.html - for the <select> version */
+    display: inline-block;
+    margin-left: 20px;
+}
+#language-switcher-container-admin label { /* Label for the <select> */
+    margin-right: 8px;
+    color: var(--text-muted);
+    font-size: 0.9em;
+}
+#language-select-admin { /* The <select> element itself */
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border-gray);
+    background-color: var(--input-bg);
+    color: var(--text-light);
+    font-size: 0.85em;
+}
+#language-select-admin:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(var(--accent-blue-rgb), 0.25);
+}
+
+
+/* --- Sidebar Navigation (New) --- */
+#sidebar {
+    width: 250px; 
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: var(--sidebar-bg);  /* Use theme variable */
+    border-right: 1px solid var(--border-gray);
+    box-shadow: 3px 0 8px rgba(var(--box-shadow-color-rgb,0,0,0),0.2); /* Adjusted for theme */
+    padding-top: 20px;
+    overflow-y: auto;
+    z-index: 1000;
+    transform: translateX(0); 
+    transition: transform 0.3s ease-in-out;
+}
+#sidebar.hidden { 
+    transform: translateX(-100%);
+}
+
+#sidebar nav {
+    padding: 0;
+}
+#sidebar .sidebar-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+#sidebar .sidebar-list li a.sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 14px 25px; 
+    text-decoration: none;
+    color: var(--text-muted);
+    border-left: 4px solid transparent; 
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-left-color 0.2s ease-in-out;
+}
+#sidebar .sidebar-list li a.sidebar-link:hover {
+    background-color: rgba(var(--accent-blue-rgb), 0.05); /* Adjusted for light theme too */
+    color: var(--link-hover-color);
+}
+#sidebar .sidebar-list li a.sidebar-link.active {
+    background-color: rgba(var(--accent-blue-rgb), 0.1); /* Adjusted for light theme too */
+    color: var(--accent-blue);
+    font-weight: 600; 
+    border-left-color: var(--accent-blue);
+}
+#sidebar .sidebar-icon {
+    margin-right: 18px; 
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0; 
+}
+#sidebar .sidebar-icon svg {
+    width: 22px; 
+    height: 22px;
+    fill: currentColor;
+}
+#sidebar .sidebar-text {
+    font-size: 0.95em;
+    white-space: nowrap; 
+    overflow: hidden;    
+    text-overflow: ellipsis; 
+}
+
+
+/* --- Main Content Shifting for Sidebar --- */
+header, 
+main, 
+footer {
+    transition: margin-left 0.3s ease-in-out;
+}
+
+body.sidebar-content-shifted header,
+body.sidebar-content-shifted main,
+body.sidebar-content-shifted footer {
+    margin-left: 250px; 
+}
+
+/* --- New Header Buttons Styling --- */
+div.space-inline#new-header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    order: 2; 
+}
+
+.MuiButtonBase-root, .MuiButton-root {
+    font-family: var(--font-sans);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 6px 12px; 
+    background-color: transparent;
+    color: var(--text-light);
+    cursor: pointer;
+    text-transform: none; 
+    font-size: 0.875rem; 
+    transition: background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+    line-height: 1.75; 
+    min-width: 64px; 
+}
+.MuiButtonBase-root:hover, .MuiButton-root:hover {
+    opacity: 0.8; 
+}
+
+.MuiButton-contained {
+    background-color: var(--accent-blue);
+    color: var(--button-text-color); 
+    box-shadow: 0 1px 2px rgba(var(--box-shadow-color-rgb,0,0,0),0.15); /* Adjusted for theme */
+}
+.MuiButton-contained:hover {
+    background-color: var(--accent-blue-darker);
+    opacity: 1;
+}
+
+.MuiButton-containedWarning.css-1ma0rjo { 
+    background-color: var(--warning-yellow);
+    color: var(--warning-text-color);
+}
+.MuiButton-containedWarning.css-1ma0rjo:hover {
+    background-color: var(--warning-yellow-darker);
+    opacity: 1;
+}
+
+.MuiButton-sizeSmall {
+    padding: 4px 10px;
+    font-size: 0.8125rem;
+}
+.MuiButton-containedSizeSmall { 
+     padding: 4px 10px; 
+}
+
+
+.MuiIconButton-root {
+    padding: 8px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: var(--text-light);
+}
+.MuiIconButton-root svg {
+    fill: currentColor;
+    width: 24px; 
+    height: 24px;
+}
+.MuiIconButton-root:hover {
+    background-color: rgba(var(--text-light-rgb), 0.1); 
+    opacity: 1; 
+}
+
+
+.MuiAvatar-root.css-129ds2e {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-flex; 
+    justify-content: center; 
+    align-items: center;    
+}
+.MuiAvatar-root.css-129ds2e .MuiAvatar-img.css-1hy9t21 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.MuiBadge-root.css-1rzb3uu {
+    position: relative;
+    display: inline-block; 
+}
+.MuiBadge-badge { 
+    position: absolute;
+    top: 2px; 
+    right: 2px; 
+    transform: translate(40%, -40%); 
+    height: 18px; 
+    min-width: 18px;
+    border-radius: 9px; 
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 500; 
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 1px var(--dark-bg2); 
+    z-index: 1; 
+}
+.MuiBadge-colorError { 
+    background-color: var(--error-red);
+}
+.MuiBadge-colorSuccess { 
+    background-color: var(--success-green);
+}
+.MuiBadge-invisible { 
+    display: none !important;
+}
+
+.mr-2 { 
+    margin-right: 8px; 
+}
+
+/* --- Header Dropdowns (General) --- */
+.header-dropdown {
+    position: absolute;
+    background-color: var(--dark-bg2);
+    border: 1px solid var(--border-gray);
+    border-radius: 6px; /* Slightly more rounded */
+    box-shadow: 0 5px 15px rgba(var(--box-shadow-color-rgb, 0,0,0),0.3); /* Softer, larger shadow, themeable */
+    z-index: 1100;
+    width: 220px; /* Adjusted width */
+    padding: 12px;
+    /* top and right/left will be set by JS */
+}
+
+.header-dropdown.hidden {
+    display: none !important;
+}
+
+.header-dropdown .dropdown-section {
+    margin-bottom: 10px;
+}
+.header-dropdown .dropdown-section:last-child {
+    margin-bottom: 0;
+}
+
+.header-dropdown .dropdown-section h4 {
+    font-size: 0.9em;
+    color: var(--text-muted);
+    margin-top: 0;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.header-dropdown .dropdown-buttons {
+    display: flex;
+    gap: 8px; /* Spacing between buttons in a row */
+}
+
+.header-dropdown .dropdown-button { /* Style for buttons inside dropdowns */
+    flex-grow: 1; /* Make buttons share space if needed */
+    background-color: var(--dark-bg1);
+    color: var(--text-light);
+    border: 1px solid var(--border-gray);
+    padding: 8px 10px;
+    border-radius: 4px;
+    font-size: 0.875em;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.header-dropdown .dropdown-button:hover {
+    background-color: var(--accent-blue); 
+    border-color: var(--accent-blue-darker);
+    color: var(--button-text-color); 
+}
+
+.header-dropdown .dropdown-button.active,
+.header-dropdown .dropdown-button.active-lang-button { /* Combined style for active language/theme buttons */
+    background-color: var(--accent-blue-darker);
+    color: var(--button-text-color); 
+    font-weight: bold;
+}
+
+.header-dropdown hr.dropdown-divider {
+    border: none;
+    border-top: 1px solid var(--border-gray);
+    margin: 12px 0;
+}
+/* --- Avatar Dropdown Specific Styles --- */
+#avatar-dropdown.header-dropdown {
+    width: 340px; 
+    max-width: 90vw;
+    /* padding: 0; /* Reset padding if MuiPaper provides its own */
+}
+
+#avatar-dropdown .MuiPaper-root { /* Main card within avatar dropdown */
+    background-color: var(--dark-bg1); /* Slightly different from dropdown panel if panel is --dark-bg2 */
+    /* border-radius: 0; /* Reset if dropdown has its own rounding */
+    /* box-shadow: none; /* Reset if dropdown has its own shadow */
+    /* padding: 0; /* Reset padding if internal elements manage it */
+}
+body.light-theme #avatar-dropdown .MuiPaper-root {
+    background-color: var(--dark-bg1); /* Light theme card background */
+}
+
+
+#avatar-dropdown .MuiCardContent-root.bg-profile-content { /* User's class for profile header */
+    /* background-image is inline, keep it */
+    background-size: cover;
+    background-position: center center;
+    padding: 16px; /* Reduced padding */
+    color: #fff; /* Text color on dark bg image */
+}
+#avatar-dropdown .MuiCardContent-root.bg-profile-content .MuiAvatar-root { /* Avatar in profile header */
+    width: 60px; /* Slightly smaller */
+    height: 60px;
+    border: 2px solid rgba(255,255,255,0.8); /* Lighter border */
+    margin-right: 12px;
+}
+#avatar-dropdown .MuiCardContent-root.bg-profile-content h6 { /* Username */
+    font-weight: 500;
+    color: #fff;
+}
+#avatar-dropdown .MuiCardContent-root.bg-profile-content p { /* Role */
+    color: rgba(255,255,255,0.7);
+    font-size: 0.8rem;
+}
+
+
+#avatar-dropdown .MuiTabs-root { /* Tabs container */
+    border-bottom: 1px solid var(--border-gray);
+    /* margin-bottom: 0; /* Remove bottom margin if panels have top padding */
+}
+#avatar-dropdown .MuiTabs-flexContainer {
+    display: flex;
+    /* justify-content: space-around; /* Default is fine, or space-between */
+}
+#avatar-dropdown .MuiTab-root { /* Tab buttons */
+    padding: 10px 12px;
+    cursor: pointer;
+    color: var(--text-muted);
+    border-bottom: 3px solid transparent;
+    flex-grow: 1;
+    text-align: center;
+    font-size: 0.8rem; /* Smaller tabs */
+    text-transform: none; /* Keep normal case */
+    font-weight: 500;
+    opacity: 0.8;
+}
+#avatar-dropdown .MuiTab-root svg { /* Icons in tabs */
+    margin-right: 6px;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    fill: currentColor;
+}
+#avatar-dropdown .MuiTab-root.Mui-selected {
+    color: var(--accent-blue);
+    border-bottom-color: var(--accent-blue);
+    opacity: 1;
+}
+#avatar-dropdown .MuiTabs-indicator { /* Hide default MUI indicator */
+    height: 0; 
+}
+
+/* Admin Panel & Logout Links in Avatar Dropdown */
+#avatar-dropdown .admin-panel-link-container {
+    /* padding, border-top, margin-top are inline or from .dropdown-section */
+}
+#avatar-dropdown .dropdown-link { /* For Admin Panel link */
+    display: block;
+    padding: 8px 0px; /* Adjust padding as it's inside a section already padded */
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-size: 0.9em;
+}
+#avatar-dropdown .dropdown-link:hover {
+    text-decoration: underline;
+}
+#avatar-dropdown #avatar-logout-button.dropdown-link { /* Specific logout link */
+    color: var(--error-red);
+    font-weight: 500;
+}
+body.light-theme #avatar-dropdown #avatar-logout-button.dropdown-link {
+    color: var(--error-red); /* Ensure it uses the light theme error red */
+}
+
+
+/* Tab Panels in Avatar Dropdown */
+#avatar-dropdown [role="tabpanel"] {
+    padding: 16px; /* Padding for tab content */
+    background-color: var(--dark-bg1); /* Match card background */
+}
+body.light-theme #avatar-dropdown [role="tabpanel"] {
+    background-color: var(--dark-bg1); /* Light theme tab panel bg */
+}
+
+#avatar-dropdown [role="tabpanel"].hidden {
+    display: none !important;
+}
+
+/* Form Elements within Avatar Dropdown "General" Tab */
+#avatar-dropdown .MuiFormControl-root { 
+    margin-bottom: 16px; /* More spacing */
+    display: block; /* Ensure it takes full width */
+}
+#avatar-dropdown .MuiInputLabel-root { 
+    font-size: 0.85em; /* Smaller label */
+    color: var(--text-muted); 
+    margin-bottom: 6px; 
+    display: block; 
+}
+#avatar-dropdown .MuiInputBase-input { 
+    width: 100%;
+    padding: 10px 12px; /* Consistent padding */
+    border: 1px solid var(--border-gray);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: var(--input-bg); 
+    color: var(--text-light); 
+    font-size: 0.9em;
+}
+#avatar-dropdown .MuiInputBase-input:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px rgba(var(--accent-blue-rgb), 0.2); /* Softer focus */
+    outline: none;
+}
+/* Submit button in avatar dropdown forms */
+#avatar-dropdown button[type="submit"].MuiButton-root { 
+    display: block; 
+    width: 100%; 
+    margin-top: 16px; /* Space above button */
+    padding: 10px; /* Make it a bit larger */
+    background-color: var(--accent-blue); 
+    color: white; 
+    border:none; 
+    border-radius:4px; 
+    cursor:pointer;
+}
+#avatar-dropdown button[type="submit"].MuiButton-root:hover { 
+    background-color: var(--accent-blue-darker); 
+}
+
+/* Light theme adjustments for Mui-like elements inside avatar dropdown */
+body.light-theme #avatar-dropdown .MuiTab-root {
+    color: var(--text-muted);
+}
+body.light-theme #avatar-dropdown .MuiTab-root.Mui-selected {
+    color: var(--accent-blue);
+    border-bottom-color: var(--accent-blue);
+}
+body.light-theme #avatar-dropdown .dropdown-link {
+    color: var(--accent-blue);
+}
+body.light-theme #avatar-dropdown #avatar-logout-button.dropdown-link {
+    color: var(--error-red);
+}
+
+[end of frontend/style.css]
+
+[end of frontend/style.css]

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n-key="admin_page_title">Admin Panel</title> <!-- JS will set this -->
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body id="admin-page">
+    <aside id="sidebar" class="hidden">
+        <nav>
+            <ul class="sidebar-list">
+                <li>
+                    <a href="index.html#products" class="sidebar-link" aria-label="Tienda"> <!-- Points to index.html -->
+                        <span class="sidebar-icon">
+                            <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="StoreIcon"><path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"></path></svg>
+                        </span>
+                        <span class="sidebar-text" data-i18n-key="sidebar_store">Tienda</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html#user-movements" class="sidebar-link" aria-label="Movimientos"> <!-- Points to index.html -->
+                        <span class="sidebar-icon">
+                            <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CurrencyExchangeIcon"><path d="M12.89 11.1c-1.78-.59-2.64-.96-2.64-1.9 0-1.02 1.11-1.39 1.81-1.39 1.31 0 1.79.99 1.9 1.34l1.58-.67c-.15-.45-.82-1.92-2.54-2.24V5h-2v1.26c-2.48.56-2.49 2.86-2.49 2.96 0 2.27 2.25 2.91 3.35 3.31 1.58.56 2.28 1.07 2.28 2.03 0 1.13-1.05 1.61-1.98 1.61-1.82 0-2.34-1.87-2.4-2.09l-1.66.67c.63 2.19 2.28 2.78 2.9 2.96V19h2v-1.24c.4-.09 2.9-.59 2.9-3.22 0-1.39-.61-2.61-3.01-3.44zM3 21H1v-6h6v2H4.52c1.61 2.41 4.36 4 7.48 4 4.97 0 9-4.03 9-9h2c0 6.08-4.92 11-11 11-3.72 0-7.01-1.85-9-4.67V21zm-2-9C1 5.92 5.92 1 12 1c3.72 0 7.01 1.85 9 4.67V3h2v6h-6V7h2.48C17.87 4.59 15.12 3 12 3c-4.97 0-9 4.03-9 9H1z"></path></svg>
+                        </span>
+                        <span class="sidebar-text" data-i18n-key="sidebar_movements">Movimientos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html#user-profile" class="sidebar-link" aria-label="Cuentas"> <!-- Points to index.html (admin might have own profile elsewhere) -->
+                        <span class="sidebar-icon">
+                            <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="MonitorIcon"><path d="M20 3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h3l-1 1v2h12v-2l-1-1h3c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 13H4V5h16v11z"></path></svg>
+                        </span>
+                        <span class="sidebar-text" data-i18n-key="sidebar_accounts">Cuentas</span>
+                    </a>
+                </li>
+                <li id="sidebar-link-customers" class="hidden"> <!-- Admin only, JS will show/hide. Stays on admin page. -->
+                    <a href="#admin-customers-section" class="sidebar-link" aria-label="Clientes"> 
+                        <span class="sidebar-icon">
+                            <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="PeopleIcon"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"></path></svg>
+                        </span>
+                        <span class="sidebar-text" data-i18n-key="sidebar_customers">Clientes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html#products" class="sidebar-link" aria-label="Servicios"> <!-- Points to index.html -->
+                        <span class="sidebar-icon">
+                            <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="CastIcon"><path d="M21 3H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11z"></path></svg>
+                        </span>
+                        <span class="sidebar-text" data-i18n-key="sidebar_services">Servicios</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <header>
+        <img id="site-logo" src="logo.png" alt="Site Logo" data-i18n-key="alt_site_logo">
+        <button id="sidebar-toggle" aria-label="Toggle Menu" data-i18n-key="aria_label_toggle_menu" title="Toggle Menu">
+            <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="MenuIcon"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
+        </button>
+        <div class="space-inline" id="new-header-buttons"> <!-- Added an ID for easier targeting if needed -->
+            <button id="header-credits-button" class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedWarning MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-root MuiButton-contained MuiButton-containedWarning MuiButton-sizeSmall MuiButton-containedSizeSmall css-1ma0rjo hidden" tabindex="0" type="button" style="text-transform: none; margin-right: 10px;">0 Créditos<span class="MuiTouchRipple-root css-w0pj6f"></span></button>
+            <button id="header-tasks-button" class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium mr-2 css-167qg84 hidden" tabindex="0" type="button" aria-label="Tareas" aria-controls="menu-appbar" aria-haspopup="true"><span class="MuiBadge-root css-1rzb3uu"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="AssignmentIcon"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"></path></svg><span class="MuiBadge-badge MuiBadge-standard MuiBadge-invisible MuiBadge-anchorOriginTopRight MuiBadge-anchorOriginTopRightRectangular MuiBadge-overlapRectangular MuiBadge-colorError css-13rr3hl"></span></span><span class="MuiTouchRipple-root css-w0pj6f"></span></button>
+            <button id="header-cart-button" class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium mr-2 css-167qg84 hidden" tabindex="0" type="button" aria-label="Carrito compras" aria-controls="menu-appbar" aria-haspopup="true"><span class="MuiBadge-root css-1rzb3uu"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="ShoppingCartIcon"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"></path></svg><span class="MuiBadge-badge MuiBadge-standard MuiBadge-invisible MuiBadge-anchorOriginTopRight MuiBadge-anchorOriginTopRightRectangular MuiBadge-overlapRectangular MuiBadge-colorSuccess css-1ovz2o0"></span></span><span class="MuiTouchRipple-root css-w0pj6f"></span></button>
+            <button id="header-settings-button" class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium mr-2 css-167qg84" tabindex="0" type="button" aria-label="Configuración" aria-controls="menu-appbar" aria-haspopup="true"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="SettingsIcon"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12-.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47.41l.36 2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"></path></svg><span class="MuiTouchRipple-root css-w0pj6f"></span></button>
+            <div id="header-avatar-button" class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-z83gb hidden" tabindex="0" role="button" aria-label="Usuario" aria-controls="menu-appbar" aria-haspopup="true"><div class="MuiAvatar-root MuiAvatar-circular css-129ds2e"><img alt="avatar" src="https://netfly.s3.sa-east-1.amazonaws.com/u/demo/images/avatar/IM9pP2hNkPUkltS7MxSAazgDeHvcjPf0YqBzngHs.jpg" class="MuiAvatar-img css-1hy9t21"></div><span class="MuiTouchRipple-root css-w0pj6f"></span></div>
+        </div>
+        <div id="admin-user-info">
+            <div id="language-switcher-container-admin">
+                <label for="language-select-admin" class="visually-hidden" data-i18n-key="label_language_select">Select Language:</label>
+                <select id="language-select-admin">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                </select>
+            </div>
+            <span data-i18n-key="admin_logged_in_as">Logged in as:</span> <span id="admin-email-display"></span>
+            <button id="admin-logout-button" data-i18n-key="header_logout">Logout</button>
+        </div>
+    </header>
+
+    <main id="main-content-admin">
+        <nav id="admin-nav" style="display: none;"> 
+            <ul>
+                <li><a href="#add-product-section-admin" data-i18n-key="admin_nav_add_product">Add Product</a></li>
+            </ul>
+        </nav>
+
+        <section id="add-product-section-admin">
+            <h2 data-i18n-key="admin_add_new_product">Add New Product</h2>
+            <form id="add-product-form-admin">
+                <div>
+                    <label for="product-name-admin" data-i18n-key="form_label_product_name">Product Name:</label>
+                    <input type="text" id="product-name-admin" name="name" required autocomplete="off">
+                </div>
+                <div>
+                    <label for="product-description-admin" data-i18n-key="form_label_description">Description:</label>
+                    <textarea id="product-description-admin" name="description" autocomplete="off"></textarea>
+                </div>
+                <div>
+                    <label for="product-price-admin" data-i18n-key="form_label_price_mxn">Price (MXN):</label>
+                    <input type="number" id="product-price-admin" name="price" step="0.01" min="0" required autocomplete="off">
+                </div>
+                <div>
+                    <label for="product-image-file-admin" data-i18n-key="form_label_product_image_file">Product Image:</label> 
+                    <input type="file" id="product-image-file-admin" name="productImage" accept="image/png, image/jpeg, image/gif">
+                </div>
+                <div>
+                    <label for="product-category-admin" data-i18n-key="form_label_category">Category:</label>
+                    <input type="text" id="product-category-admin" name="category" autocomplete="off">
+                </div>
+                <button type="submit" data-i18n-key="btn_add_product_admin">Add Product</button>
+                <p id="add-product-message-admin" class="message"></p>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p data-i18n-key="footer_copyright_admin">&copy; 2024 Your E-commerce Site - Admin</p>
+    </footer>
+
+    <script src="i18n.js"></script>
+    <script src="admin.js"></script>
+    <div id="avatar-dropdown" class="header-dropdown hidden">
+    <div class="MuiBox-root css-0"> <!-- Outermost wrapper from user -->
+        <div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root css-yu30p6"> <!-- Main card -->
+            <div class="MuiCardContent-root bg-profile-content css-80p3xt" style="background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url(&quot;https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1631&amp;q=80&quot;); background-size: cover; background-position: center center; padding: 24px; color: rgb(255, 255, 255);">
+                <div class="MuiBox-root css-x75k2s" style="display: flex; align-items: center;">
+                    <div class="MuiAvatar-root MuiAvatar-circular css-129ds2e" style="width: 70px; height: 70px; border: 2px solid rgb(255, 255, 255); margin-right: 16px;">
+                        <img alt="avatar" src="https://netfly.s3.sa-east-1.amazonaws.com/u/demo/images/avatar/IM9pP2hNkPUkltS7MxSAazgDeHvcjPf0YqBzngHs.jpg" class="MuiAvatar-img css-1hy9t21" id="avatar-dropdown-user-image">
+                    </div>
+                    <div class="MuiBox-root css-0">
+                        <h6 class="MuiTypography-root MuiTypography-h6 css-1q9z1d0" id="avatar-dropdown-username" style="font-weight: 500;">Usuario Test</h6>
+                        <p class="MuiTypography-root MuiTypography-body2 css-1gt66m" id="avatar-dropdown-user-role" style="color: rgb(206, 206, 206);">Cliente</p>
+                    </div>
+                </div>
+            </div>
+            <div class="MuiCardActions-root css-k1hdl7" style="padding: 0px;">
+                <div class="MuiTabs-root css-1tvn2qk" style="flex: 1 1 0px;">
+                    <div class="MuiTabs-scroller MuiTabs-fixed css-1anid1y" style="overflow: hidden;">
+                        <div class="MuiTabs-flexContainer css-k008qs" role="tablist">
+                            <button class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected css-1tvmwaa" tabindex="0" type="button" role="tab" aria-selected="true" id="avatar-dropdown-tab-general" aria-controls="avatar-dropdown-tabpanel-general">
+                                <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="PersonOutlineIcon" style="margin-right: 8px;"><path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"></path></svg>
+                                General
+                            <span class="MuiTabs-indicator css-118dy7j" style="left: 0px; width: 80.3281px;"></span></button>
+                            <button class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1tvmwaa" tabindex="-1" type="button" role="tab" aria-selected="false" id="avatar-dropdown-tab-security" aria-controls="avatar-dropdown-tabpanel-security">
+                                <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="LockOpenOutlinedIcon" style="margin-right: 8px;"><path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-10C9.24 0 7 2.24 7 5v3H6c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2h-1V5c0-2.76-2.24-5-5-5zm2.8 8H9.2V5.6C9.2 4.12 10.48 3 12 3s2.8 1.12 2.8 2.6V8z"></path></svg>
+                                Seguridad
+                            </button>
+                            <button class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-1tvmwaa" tabindex="-1" type="button" role="tab" aria-selected="false" id="avatar-dropdown-tab-sessions" aria-controls="avatar-dropdown-tabpanel-sessions">
+                                <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-11fo197" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="HistoryOutlinedIcon" style="margin-right: 8px;"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.25 2.52.77-1.28-3.52-2.09V8H12z"></path></svg>
+                                Sesiones
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown-section admin-panel-link-container hidden" id="avatar-admin-panel-link-container" style="padding: 8px 16px; border-top: 1px solid var(--border-gray); margin-top: 8px;">
+                <a href="admin.html" id="avatar-admin-panel-link" class="dropdown-link" data-i18n-key="header_admin_panel">Admin Panel</a>
+            </div>
+        </div> <!-- Closing MuiPaper-root / MuiCard-root -->
+
+        <!-- Tab Panels -->
+        <div class="MuiBox-root css-8135er" style="padding:16px;">
+            <div role="tabpanel" id="avatar-dropdown-tabpanel-general" aria-labelledby="avatar-dropdown-tab-general">
+                <p>Contenido General (perfil, etc.)</p>
+                 <a href="#" id="avatar-logout-button" class="dropdown-link" data-i18n-key="header_logout_dropdown" style="display:block; margin-top:10px; color:var(--error-red);">Logout</a>
+            </div>
+            <div role="tabpanel" id="avatar-dropdown-tabpanel-security" aria-labelledby="avatar-dropdown-tab-security" class="hidden">
+                <p>Contenido de Seguridad (cambiar contraseña, 2FA, etc.)</p>
+            </div>
+            <div role="tabpanel" id="avatar-dropdown-tabpanel-sessions" aria-labelledby="avatar-dropdown-tab-sessions" class="hidden">
+                <p>Contenido de Sesiones (dispositivos activos, etc.)</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="cart-summary-dropdown" class="header-dropdown hidden">
+        <div class="dropdown-section">
+            <h4 data-i18n-key="dropdown_cart_title">Shopping Cart Summary</h4>
+        </div>
+        <div id="cart-summary-items-container" style="max-height: 200px; overflow-y: auto; margin-bottom: 10px;">
+            <!-- Cart items will be dynamically rendered here by JS -->
+            <p class="empty-cart-message" data-i18n-key="dropdown_cart_empty" style="text-align: center; color: var(--text-muted);">Your cart is empty.</p>
+        </div>
+        <hr class="dropdown-divider">
+        <div class="dropdown-section cart-summary-total-section" style="display: flex; justify-content: space-between; align-items: center; font-weight: bold;">
+            <span data-i18n-key="dropdown_cart_total_label">Total:</span>
+            <span id="cart-summary-total-price">MXN 0.00</span>
+        </div>
+        <div class="dropdown-section cart-summary-actions" style="margin-top: 10px;">
+            <button id="cart-summary-checkout-button" class="dropdown-button primary-action-button" data-i18n-key="dropdown_cart_checkout" style="width: 100%;">Proceed to Checkout</button>
+        </div>
+    </div>
+</body>
+</html>
